@@ -1,5 +1,5 @@
 (function() {
-  var Start, Stop, alarmName, action, allTabs, clearAlarm, currIdx, disableEngine, enableEngine, enabled, loadData, nextTab, setAlarm, settings, tabsQueryCallback;
+  var Start, Stop, alarmName, allTabs, clearAlarm, currIdx, disableEngine, enableEngine, enabled, loadData, nextTab, setAlarm, settings, tabsQueryCallback;
 
   settings = null;
 
@@ -11,16 +11,14 @@
 
   currIdx = -1;
   
-  action = function(tab) {
+  function(tab) {
     if (enabled === false) {
       enableEngine();
     } else {
       disableEngine();
     }
   };
-  
-  action;
-  
+    
   clearAlarm = function() {
     var whenTarget;
     whenTarget = Date.now() + 9999999;
@@ -103,7 +101,13 @@
 
   chrome.alarms.onAlarm.addListener(nextTab);
 
-  chrome.browserAction.onClicked.addListener(action);
+  chrome.browserAction.onClicked.addListener(function(tab) {
+    if (enabled === false) {
+      enableEngine();
+    } else {
+      disableEngine();
+    }
+  });
 
   enableEngine = function() {
     enabled = true;
