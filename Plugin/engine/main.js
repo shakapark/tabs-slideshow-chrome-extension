@@ -11,13 +11,11 @@
 
   currIdx = -1;
   
-  function(tab) {
-    if (enabled === false) {
-      enableEngine();
-    } else {
-      disableEngine();
-    }
-  };
+  if (enabled === false) {
+    enableEngine();
+  } else {
+    disableEngine();
+  }
     
   clearAlarm = function() {
     var whenTarget;
