@@ -11,12 +11,6 @@
 
   currIdx = -1;
   
-  if (enabled === false) {
-    enableEngine();
-  } else {
-    disableEngine();
-  }
-    
   clearAlarm = function() {
     var whenTarget;
     whenTarget = Date.now() + 9999999;
@@ -106,7 +100,13 @@
       disableEngine();
     }
   });
-
+  
+  if (enabled === false) {
+    enableEngine();
+  } else {
+    disableEngine();
+  }
+  
   enableEngine = function() {
     enabled = true;
     clearAlarm();
