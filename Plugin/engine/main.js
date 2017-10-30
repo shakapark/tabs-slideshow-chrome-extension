@@ -101,12 +101,6 @@
     }
   });
   
-  if (enabled === false) {
-    enableEngine();
-  } else {
-    disableEngine();
-  }
-  
   enableEngine = function() {
     enabled = true;
     clearAlarm();
@@ -130,5 +124,11 @@
       };
     }
   };
+
+  if (enabled === false) {
+    enableEngine();
+  } else {
+    disableEngine();
+  }
 
 }).call(this);
