@@ -37,7 +37,7 @@
     data = JSON.parse(localStorage.getItem('tabSlideShowData'));
     if (!data) {
       data = {
-        time: "2",
+        time: "20",
         reload: false,
         custom: []
       };

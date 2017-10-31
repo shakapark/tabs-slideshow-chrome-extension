@@ -39,11 +39,11 @@
   };
 
   tabsQueryCallback = function(tabArr) {
-    if (tabArr.length === 1) {
+    /*if (tabArr.length === 1) {
       disableEngine();
       alert('Only one tab!');
       return;
-    }
+    }*/
     allTabs = tabArr;
     nextTab();
   };
@@ -100,6 +100,11 @@
       disableEngine();
     }
   });
+
+/*  chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    disableEngine();
+    enableEngine();
+  });*/
   
   enableEngine = function() {
     enabled = true;
@@ -118,17 +123,16 @@
     settings = JSON.parse(localStorage.getItem('tabSlideShowData'));
     if (!settings) {
       settings = {
-        time: 2,
+        time: 20,
         reload: false,
         custom: []
       };
     }
   };
 
-  if (enabled === false) {
-    enableEngine();
-  } else {
+  chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     disableEngine();
-  }
+    enableEngine();
+  });
 
 }).call(this);
